@@ -6,11 +6,7 @@
 using namespace std;
 
 Student::Student() {
-
-
+  cout << "student created" << endl;
 }
 
-Student* Student::getStudent() {
 
-
-}

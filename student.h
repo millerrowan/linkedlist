@@ -6,13 +6,11 @@
 
 using namespace std;
 
-class student {
+class Student {
  public:
-
+  Student();  
 
  protected:
-
-
-
+  
 };
 #endif

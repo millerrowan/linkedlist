@@ -3,17 +3,19 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include "student.h"
 
 using namespace std;
 
 class Node {
  public:
-
-
- protected: 
-
-
-
-
+  Node(Student* myStudent);
+  ~Node();
+  Node* getNext();
+  void setNext(Node* nextNode); 
+  Student* getStudent();
+ protected:  
+  Node* next;
+  Student* student; 
 };
 #endif
