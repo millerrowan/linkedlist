@@ -4,9 +4,13 @@
 #include "node.h"
 #include "student.h"
 
+/* Linked List creates a student list but uses linked lists instead of vectors
+   Author: Rowan Miller
+   12/4/23
+ */
+
 using namespace std;
 
-//main
 
 int main() {
   Student* myStudent = new Student();
