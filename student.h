@@ -11,6 +11,9 @@ class Student {
   Student();  
 
  protected:
-  
+  char firstName[20];
+  char lastName[20];
+  int id;
+  float gpa; 
 };
 #endif

@@ -20,8 +20,37 @@ int main() {
   myNode->getNext();
   myNode->getStudent();
   delete myNode; 
-  
-  
 
+  char input[10]; 
+  
+  cout << "Enter 'ADD', 'PRINT', or 'DELETE" << endl;
+
+  cin >> input;
+
+  if(strcmp(input, "ADD")==0) {
+    add();
+  }
+
+  if(strcmp(input, "PRINT")==0) {
+    print():
+  }
+
+  if(strcmp(input, "DELETE")==0) {
+    Delete();
+  }
+}
+
+void add() {
+  //use recursion
+
+}
+
+void print() {
+  //use recursion
+
+}
+
+void Delete() {
+  //make sure to confirm the deletion
 
 }
