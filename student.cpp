@@ -8,7 +8,7 @@ using namespace std;
 Student::Student() {
   cout << "student created" << end;
   cout << "Enter the first name" << endl;
-    cin >> firstName;
+  cin >> firstName;
   cout << "Enter the last name" << endl;
   cin >> lastName;
   cout << "Enter the student id" << endl;
@@ -17,4 +17,18 @@ Student::Student() {
   cin >> gpa; 
 }
 
+char* Student::getFN() {
+  return firstName;
+}
 
+char* Student::getLN() {
+  return lastName;
+}
+
+int Student::getID() {
+  return id;
+}
+
+float Student::getGPA() {
+  return gpa; 
+}

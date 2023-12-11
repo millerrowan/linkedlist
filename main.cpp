@@ -21,6 +21,8 @@ int main() {
   myNode->getStudent();
   delete myNode; 
 
+  Node* head = NULL; 
+
   char input[10]; 
   
   cout << "Enter 'ADD', 'PRINT', or 'DELETE" << endl;
@@ -40,9 +42,21 @@ int main() {
   }
 }
 
-void add() {
+void add(Node* head) {
   //use recursion
-
+  Node* current = head;
+  if(current == NULL) {
+    current = new Node();
+    current->Student(); 
+  }
+  else{
+    while(current->getNext() != NULL) {
+      current = current->getNext(); 
+    }
+    current->setNext(new Node());
+    current->getNext()->getStudent(//pass in variables from node.cpp); 
+  }
+  
 }
 
 void print() {
