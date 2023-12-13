@@ -21,7 +21,7 @@ int main() {
   myNode->getStudent();
   delete myNode; 
 
-  Node* head = NULL; 
+  Node* head = NULL;
 
   char input[10]; 
   
@@ -30,6 +30,7 @@ int main() {
   cin >> input;
 
   if(strcmp(input, "ADD")==0) {
+    Student* s = new Student();
     add();
   }
 
@@ -42,14 +43,26 @@ int main() {
   }
 }
 
-void add(Node* head) {
+void add(Node* &head, Node* prev, Student* s) {
   //use recursion
   Node* current = head;
   if(current == NULL) {
-    current = new Node();
-    current->Student(); 
+    current = new Node(s); 
+  }
+  else if(current->getNext() == NULL) {
+    if(s->getID() < current->getStudent()->getID()) {
+      Node* temp = new Node(s);
+      prev->setNext(temp);
+      temp->setNext(current);
+    }
+    else {
+      Node* temp = new Node(s); 
+      current->setNext(temp); 
+    }
   }
   else{
+    Node* prev = head;
+    Node* current = head->getNext(); 
     while(current->getNext() != NULL) {
       current = current->getNext(); 
     }
