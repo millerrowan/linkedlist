@@ -14,8 +14,8 @@ class Student {
   int getID();
   float getGPA();
  protected:
-  char* firstName[20];
-  char* lastName[20];
+  char* firstName;
+  char* lastName;
   int id;
   float gpa; 
 };

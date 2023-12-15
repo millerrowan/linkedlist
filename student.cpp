@@ -6,10 +6,12 @@
 using namespace std;
 
 Student::Student() {
-  cout << "student created" << end;
+  cout << "student created" << endl;
   cout << "Enter the first name" << endl;
+  firstName = new char[20];
   cin >> firstName;
   cout << "Enter the last name" << endl;
+  lastName = new char[20];
   cin >> lastName;
   cout << "Enter the student id" << endl;
   cin >> id;

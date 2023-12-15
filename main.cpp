@@ -11,39 +11,45 @@
 
 using namespace std;
 
+void add(Node* &head, Node* prev, Student* s, Node* nextNode);
+void print();
+void Delete();
 
 int main() {
-  Student* myStudent = new Student();
-  Node* myNode = new Node(myStudent);
-  Node* nextNode = new Node(myStudent); 
-  myNode->setNext(nextNode);
-  myNode->getNext();
-  myNode->getStudent();
-  delete myNode; 
-
+  
+  bool stillPlaying = true; 
+  
   Node* head = NULL;
+  Node* prev = head;
 
   char input[10]; 
-  
-  cout << "Enter 'ADD', 'PRINT', or 'DELETE" << endl;
 
-  cin >> input;
-
-  if(strcmp(input, "ADD")==0) {
-    Student* s = new Student();
-    add();
-  }
-
-  if(strcmp(input, "PRINT")==0) {
-    print():
-  }
-
-  if(strcmp(input, "DELETE")==0) {
-    Delete();
+  while(stillPlaying == true) {
+    cout << "Enter 'ADD', 'PRINT', 'DELETE', or 'QUIT'" << endl;
+    
+    cin >> input;
+    
+    if(strcmp(input, "ADD")==0) {
+      Student* s = new Student();
+      Node* nextNode = new Node(s); 
+      add(head, prev, s, nextNode);
+    }
+    
+    if(strcmp(input, "PRINT")==0) {
+      print();
+    }
+    
+    if(strcmp(input, "DELETE")==0) {
+      Delete();
+    }
+    
+    if(strcmp(input, "QUIT")==0) {
+      stillPlaying = false; 
+    }
   }
 }
 
-void add(Node* &head, Node* prev, Student* s) {
+void add(Node* &head, Node* prev, Student* s, Node* nextNode) {
   //use recursion
   Node* current = head;
   if(current == NULL) {
@@ -66,14 +72,15 @@ void add(Node* &head, Node* prev, Student* s) {
     while(current->getNext() != NULL) {
       current = current->getNext(); 
     }
-    current->setNext(new Node());
-    current->getNext()->getStudent(//pass in variables from node.cpp); 
+    current->setNext(nextNode);//will have to change this variable name
+    current->getNext()->getStudent();//pass in variables from node.cpp 
   }
-  
 }
 
+				   
 void print() {
   //use recursion
+  
 
 }
 
@@ -81,3 +88,4 @@ void Delete() {
   //make sure to confirm the deletion
 
 }
+
