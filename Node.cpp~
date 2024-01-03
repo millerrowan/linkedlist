@@ -33,7 +33,8 @@ void Node::setNext(Node* nextNode) {
 }
 
 //gets the student
-Student* Node::getStudent() { 
+Student* Node::getStudent() {
+  cout << "getting student" << endl; 
   return student; 
 }
 
