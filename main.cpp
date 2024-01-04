@@ -13,8 +13,8 @@ using namespace std;
 
 void add(Node* &head, Node* prev, Student* s, Node* nextNode);
 void print(Node* head);
-void Delete();
-void average();
+void Delete(Node* head, Node* prev);
+void average(Node* head);
 
 int main() {
   
@@ -41,11 +41,11 @@ int main() {
     }
     
     if(strcmp(input, "DELETE")==0) {
-      Delete();
+      Delete(head, prev);
     }
 
     if(strcmp(input, "AVERAGE")==0) {
-      average();
+      average(head);
     }
     
     if(strcmp(input, "QUIT")==0) {
@@ -109,7 +109,7 @@ void print(Node* head) {
 }
 
 //deletes a student from the list
-void Delete(Node* head) {
+void Delete(Node* head, Node* prev) {
   //make sure to confirm the deletion
   int stored; 
   cout << "Type in the student id of the student you want to delete" << endl; 
@@ -120,22 +120,38 @@ void Delete(Node* head) {
     //if the user id matches id of student
     if (current->getStudent()->getID() == stored) {
       delete current;
-      current = nextNode->getNext();
+      prev->setNext(current->getNext());
+      current = NULL;
     }
     //if user id doesn't match id of student
     else{
       //sets current to the next node
       current = current->getNext();
-      Delete(head);
+      Delete(head, prev);
     }
   }
   //if current equals NULL
   else {
-    cout << "there is nothing to delete" 
+    cout << "there is nothing to delete" << endl; 
   }
 }
 
-void average() {
-
-
+void average(Node* head) {
+  int sum = 0;
+  int studentCount = 0; 
+  Node* current = head;
+  cout.setf(ios::fixed, ios::floatfield);
+  cout.precision(2);
+  //if current exists
+  if(current != NULL) {
+    sum = sum + current->getStudent()->getGPA();
+    studentCount++;
+    current = current->getNext();
+    average(head); 
+  }
+  //if current does not exist
+  else {
+    float average = sum/(float) studentCount; 
+    cout << "Average: " << average << endl; 
+  }
 }
