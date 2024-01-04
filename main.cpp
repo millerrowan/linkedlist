@@ -54,6 +54,7 @@ int main() {
   }
 }
 
+//adds a student to the list
 void add(Node* &head, Node* prev, Student* s, Node* current) {
   //use recursion
   if(head == NULL) {
@@ -92,11 +93,13 @@ void add(Node* &head, Node* prev, Student* s, Node* current) {
   }
 }
 
-				   
+//prints out all students in list	   
 void print(Node* head) {
   //use recursion
   Node* current = head;
+  //if current exists
   if(current != NULL) {
+    //prints out student
     cout << current->getStudent()->getFN() << " " << current->getStudent()->getLN() << ", " << current->getStudent()->getID();
     cout.setf(ios::fixed, ios::floatfield);
     cout.precision(2); 
@@ -105,18 +108,30 @@ void print(Node* head) {
   }
 }
 
+//deletes a student from the list
 void Delete(Node* head) {
   //make sure to confirm the deletion
   int stored; 
   cout << "Type in the student id of the student you want to delete" << endl; 
   cin >> stored;
   Node* current = head;
-  if (current->getStudent()->getID() == stored) {
-    delete current;
+  //if the current value exists
+  if (current != NULL) {
+    //if the user id matches id of student
+    if (current->getStudent()->getID() == stored) {
+      delete current;
+      current = nextNode->getNext();
+    }
+    //if user id doesn't match id of student
+    else{
+      //sets current to the next node
+      current = current->getNext();
+      Delete(head);
+    }
   }
-  else{
-    current =  
-    Delete(head);
+  //if current equals NULL
+  else {
+    cout << "there is nothing to delete" 
   }
 }
 
