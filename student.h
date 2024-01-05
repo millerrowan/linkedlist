@@ -17,6 +17,6 @@ class Student {
   char* firstName;
   char* lastName;
   int id;
-  float gpa; 
+  float gpa;
 };
 #endif

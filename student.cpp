@@ -16,7 +16,7 @@ Student::Student() {
   cout << "Enter the student id" << endl;
   cin >> id;
   cout << "Enter the gpa" << endl;
-  cin >> gpa; 
+  cin >> gpa;
 }
 
 char* Student::getFN() {
