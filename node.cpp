@@ -1,40 +1,29 @@
-#include <iostream>
+#include <iostream> 
 #include "node.h"
-#include <cstring>
-#include <vector>
 #include "student.h"
+
+#include <cstring>
 
 using namespace std;
 
-//creates the node 
 Node::Node(Student* myStudent) {
-  student = myStudent; 
-  next = NULL;
-  cout << "constucting" << endl;
+    student = myStudent;
+    next = nullptr;
+    
 }
 
-//deletes the student
 Node::~Node() {
-  delete student;
-  next = NULL;
-  cout << "destructing" << endl; 
+    delete student;
 }
 
-//gets the next node
-Node* Node::getNext() {
-  cout << "getting next" << endl; 
-  return next;
+void Node::setNext(Node* newnext) {
+    next = newnext;
 }
 
-//sets the next node
-void Node::setNext(Node* nextNode) {
-  next = nextNode;
-  cout << "setting next" << endl; 
+Node* Node::getNext()  {
+    return next;
 }
 
-//gets the student
-Student* Node::getStudent() { 
-  return student; 
+Student* Node::getStudent()  {
+    return student;
 }
-
-

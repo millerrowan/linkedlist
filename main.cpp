@@ -11,9 +11,9 @@
 
 using namespace std;
 
-void add(Node* &head, Node* prev, Student* s, Node* nextNode);
+void add(Node* &head, Node* prev, Student* s, Node* newnext);
 void print(Node* head);
-void Delete(Node* &head, Node* prev, Node* nextNode, int stored);
+void Delete(Node* &head, Node* prev, Node* newnext, int stored);
 void average(Node* current, int studentCount, float total);
 
 int main() {
@@ -119,12 +119,9 @@ void print(Node* head) {
 //deletes a student from the list
 void Delete(Node* &head, Node* prev, Node* current, int stored) {
   //make sure to confirm the deletion
-  /*int stored; 
-  cout << "Type in the student id of the student you want to delete" << endl; 
-  cin >> stored; */
-  //Node* current = head;
-   //if the head value exists
+  //if stored id matches head
   if (head->getStudent()->getID() == stored) {
+    //if head exists
     if (head != NULL) {
     //if the user if matches id of student
       delete head;
