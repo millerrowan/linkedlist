@@ -100,8 +100,8 @@ void add(Node* &head, Node* prev, Student* s, Node* current) {
 //prints out all students in list	   
 void print(Node* head) {
   //use recursion
-  Node* current = head;
   //if current exists
+  Node* current = head; 
   if(current != NULL) {
     //prints out student
     cout << current->getStudent()->getFN() << " " << current->getStudent()->getLN() << ", " << current->getStudent()->getID();
@@ -117,13 +117,14 @@ void print(Node* head) {
 }
 
 //deletes a student from the list
-void Delete(Node* &head, Node* prev, Node* current, int stored) {
+void Delete(Node* &head, Node* prev, Node* &current, int stored) {
   //make sure to confirm the deletion
   //if stored id matches head
   if (head->getStudent()->getID() == stored) {
     //if head exists
     if (head != NULL) {
     //if the user if matches id of student
+      //current = current->getNext();
       delete head;
       cout << "we deleted head" << endl;
       head = NULL;
@@ -149,8 +150,8 @@ void Delete(Node* &head, Node* prev, Node* current, int stored) {
     }
     //if user id doesn't match
     else {
-      current = current->getNext();
-      prev = prev->getNext(); 
+      prev = current; 
+      current = current->getNext(); 
       Delete(head, prev, current, stored);
     }
   }
