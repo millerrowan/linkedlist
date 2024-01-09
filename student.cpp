@@ -19,6 +19,11 @@ Student::Student() {
   cin >> gpa;
 }
 
+Student::~Student() {
+  delete firstName;
+  delete lastName;
+}
+
 char* Student::getFN() {
   return firstName;
 }

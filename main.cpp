@@ -21,7 +21,6 @@ int main() {
   bool stillPlaying = true; 
   
   Node* head = NULL;
-  Node* prev = head;
 
   char input[10];
 
@@ -117,27 +116,29 @@ void print(Node* head) {
 }
 
 //deletes a student from the list
-void Delete(Node* &head, Node* prev, Node* &current, int stored) {
+void Delete(Node* &head, Node* prev, Node* current, int stored) {
   //make sure to confirm the deletion
   //if stored id matches head
-  if (head->getStudent()->getID() == stored) {
+  if(head != NULL) {
+    if (head->getStudent()->getID() == stored) {
     //if head exists
-    if (head != NULL) {
     //if the user if matches id of student
       //current = current->getNext();
-      delete head;
-      cout << "we deleted head" << endl;
-      head = NULL;
-    }
-    //if head equals NULL
-    else{
-      cout << "there is nothing to delete" << endl;
+      if (head->getNext() != NULL) {
+	delete head;
+	head = head->getNext(); 
+      }
+      else {
+	delete head;
+        head = NULL;
+      }
     }
   }
+    //if head equals NULL
   //if the current value matches id of student
-   else if (current->getStudent()->getID() == stored) {
+  else if (current != NULL) {
+    if (current->getStudent()->getID() == stored) {
       //if current does not equal NULL
-      if (current != NULL) {
 	prev->setNext(current->getNext());
 	delete current;
 	current = NULL;
@@ -145,14 +146,14 @@ void Delete(Node* &head, Node* prev, Node* &current, int stored) {
       //if current does equal NULL
       else{
 	//sets current to the next node
-	cout << "there is nothing to delete" << endl; 
+	prev = current;
+	current = current->getNext();
+	Delete(head, prev, current, stored); 
       }
     }
     //if user id doesn't match
     else {
-      prev = current; 
-      current = current->getNext(); 
-      Delete(head, prev, current, stored);
+      cout << "there is nothing to delete" << endl; 
     }
   }
 
