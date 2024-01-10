@@ -6,7 +6,7 @@
 
 /* Linked List creates a student list but uses linked lists instead of vectors
    Author: Rowan Miller
-   12/4/23
+   1/9/24
  */
 
 using namespace std;
@@ -29,28 +29,30 @@ int main() {
     cout << "Enter 'ADD', 'PRINT', 'DELETE', 'AVERAGE', or 'QUIT'" << endl;
     
     cin >> input;
-    
+    //if user input equals ADD
     if(strcmp(input, "ADD")==0) {
       Student* s = new Student();
       Node* nextNode = new Node(s);
       add(head, head, s, head);
     }
-    
+    //if user input equals PRINT
     if(strcmp(input, "PRINT")==0) {
       print(head);
     }
-    
+
+    //if user input equals DELETE
     if(strcmp(input, "DELETE")==0) {
       int stored;
       cout << "Type in the student id of the student you want to delete" << endl;
       cin >> stored;
       Delete(head, head, head, stored);
     }
-
+    //if user input equals AVERAGE
     if(strcmp(input, "AVERAGE")==0) {
       average(head, 0, 0);
     }
-    
+
+    //if user input equals QUIT
     if(strcmp(input, "QUIT")==0) {
       stillPlaying = false; 
     }
@@ -117,46 +119,52 @@ void print(Node* head) {
 
 //deletes a student from the list
 void Delete(Node* &head, Node* prev, Node* current, int stored) {
-  //make sure to confirm the deletion
   //if stored id matches head
-  if(head != NULL) {
-    if (head->getStudent()->getID() == stored) {
-    //if head exists
-    //if the user if matches id of student
-      //current = current->getNext();
+  if (head->getStudent()->getID() == stored) {
+    //if head doesn't equal NULL
+    if(head != NULL) {
+      cout << "head doesn't equal NULL" << endl; 
+      //if head exists
       if (head->getNext() != NULL) {
+	cout << "head has a next" << endl;
+	Node* temp = head->getNext();
 	delete head;
-	head = head->getNext(); 
-      }
+	head = temp;
+     }
       else {
+	cout << "head doesn't have a next" << endl;
 	delete head;
-        head = NULL;
+	head = NULL;
       }
     }
+    else {
+      cout << "there is nothing to delete head" << endl;
+    }
   }
-    //if head equals NULL
-  //if the current value matches id of student
-  else if (current != NULL) {
-    if (current->getStudent()->getID() == stored) {
-      //if current does not equal NULL
+    //if current equals the id typed in
+  else if (current->getStudent()->getID() == stored) {
+    //if current does not equal NULL
+    if (current != NULL) {
+      cout << "current doesn't equal NULL" << endl;
+      //cout << "current equals stored" << endl;
 	prev->setNext(current->getNext());
 	delete current;
 	current = NULL;
       }
       //if current does equal NULL
       else{
-	//sets current to the next node
-	prev = current;
-	current = current->getNext();
-	Delete(head, prev, current, stored); 
+	cout << "there is nothing to delete" << endl;
       }
-    }
-    //if user id doesn't match
-    else {
-      cout << "there is nothing to delete" << endl; 
-    }
   }
+    //if head or current doesn't equal the stored id
+    else {
+      prev = current;
+      current = current->getNext();
+      Delete(head, prev, current, stored); 
+    }
+}
 
+//averages the gpas of all students in the list
 void average(Node* current, int studentCount, float total) {
   cout.setf(ios::fixed, ios::floatfield);
   cout.precision(2);
